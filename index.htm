@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlvaroApi</title>
+    <style>
+        body {
+            background-color: #202329;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3c3e44;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #97ce4c;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .contenido {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .personaje {
+            background-color: #3c3e44;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            max-width: 500px;
+        }
+
+        .personaje:hover {
+            transform: scale(1.05);
+        }
+
+        .personaje h1 {
+            background-color: #202329;
+            font-size: 1.5rem;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .personaje img {
+            width: 100%;
+        }
+
+        .personaje p {
+            background-color: #202329;
+            margin: 0;
+            padding: 10px;
+        }
+.buscadorcito {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #97ce4c;
+    border-radius: 5px;
+    background-color: #3c3e44;
+    color: #ffffff;
+    font-size: 1rem;
+    margin: 20px;
+}
+
+.buscadorcito::placeholder {
+    color: #97ce4c;
+    opacity: 0.7;
+}
+
+.buscadorcito:focus {
+    border-color: #ffffff;
+}
+
+.buscaa {
+    padding: 10px 20px;
+    background-color: #97ce4c;
+    color: #202329;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.buscaa:hover {
+    background-color: #7fb339;
+    transform: scale(1.05);
+}
+
+.buscaa:active {
+    transform: scale(0.95);
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AlvaroApi</h1>
+    </header>
+    <input type="text" id="input" placeholder="Buscar por nombre..." class="buscadorcito">
+<button onclick="CargarPersonajes()" class="buscaa">Buscar</button>
+    <div class="contenido"></div>
+    <div class="contenido">
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
