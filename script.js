@@ -1,7 +1,17 @@
+//https://github.com/exsaol24/AlvaroApi.git
+let controller;
+
 async function CargarPersonajes() {
+    if (controller) {
+        controller.abort();
+    }
+    controller = new AbortController();
+    const signal = controller.signal;
+
     try {
         let respuesta = await fetch("https://rickandmortyapi.com/api/character", {
             method: "GET",
+            signal: signal
         });
         let datos = await respuesta.json();
         var contenido = document.getElementsByClassName("contenido")[0];
@@ -26,7 +36,11 @@ async function CargarPersonajes() {
             }
         });
     } catch (e) {
-        console.log(e);
+        if (e.name === 'AbortError') {
+            console.log('Solicitud cancelada');
+        } else {
+            console.error('Error en la solicitud', e);
+        }
     }
 }
 

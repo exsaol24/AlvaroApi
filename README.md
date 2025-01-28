@@ -3,9 +3,31 @@
 
  URL de la API: https://rickandmortyapi.com/api/character
 
-//https://rickandmortyapi.com/api/character/?name=rick esta te devuelve solo a rick
-let respuesta = await fetch("https://rickandmortyapi.com/api/character", {
-        method: "GET",
-        });
-        let datos = await respuesta.json();
-esto devuelve la informacion de todos los personajes de la API
+## Uso de AbortController
+AbortController permite cancelar solicitudes en curso si el usuario realiza una nueva acción que genera una consulta a la API. Esto mejora la eficiencia y la experiencia del usuario al evitar resultados obsoletos.
+
+### Ejemplo de implementación:
+```javascript
+const controller = new AbortController();
+const signal = controller.signal;
+
+fetch("https://rickandmortyapi.com/api/character", { signal })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => {
+        if (error.name === 'AbortError') {
+            console.log('Solicitud cancelada');
+        } else {
+            console.error('Error en la solicitud', error);
+        }
+    });
+
+// Para cancelar la solicitud
+controller.abort();
+```
+
+## Manejo de errores
+Se implementa un sistema que captura y maneja errores generados al cancelar solicitudes u otros problemas de red. Esto asegura que la aplicación maneje adecuadamente situaciones inesperadas y proporcione retroalimentación al usuario.
+
+## Búsqueda en tiempo real
+La aplicación permite al usuario buscar datos mediante un campo de texto, actualizando dinámicamente los resultados a medida que escribe.
